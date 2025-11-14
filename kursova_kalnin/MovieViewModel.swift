@@ -55,4 +55,42 @@ final class MovieViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(from: url)
         return try JSONDecoder().decode(MovieDetail.self, from: data)
     }
+    
+    // MARK: - Image URL Builder
+    func fullImageURL(for path: String?) -> URL? {
+        guard let path = path else { return nil }
+        return URL(string: "\(Self.imageBaseURL)\(path)")
+    }
+
+    // MARK: - Watch Later
+    @Published var watchLater: [Movie] = []
+    private let watchLaterKey = "watchLaterMovies"
+
+    func loadWatchLater() {
+        if let data = UserDefaults.standard.data(forKey: watchLaterKey),
+           let movies = try? JSONDecoder().decode([Movie].self, from: data) {
+            watchLater = movies
+        }
+    }
+
+    func saveWatchLater() {
+        if let data = try? JSONEncoder().encode(watchLater) {
+            UserDefaults.standard.set(data, forKey: watchLaterKey)
+        }
+    }
+
+    func addToWatchLater(_ movie: Movie) {
+        guard !watchLater.contains(where: { $0.id == movie.id }) else { return }
+        watchLater.append(movie)
+        saveWatchLater()
+    }
+
+    func removeFromWatchLater(_ movie: Movie) {
+        watchLater.removeAll { $0.id == movie.id }
+        saveWatchLater()
+    }
+
+    func isInWatchLater(_ movie: Movie) -> Bool {
+        watchLater.contains { $0.id == movie.id }
+    }
 }
