@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		236BA0002EC70936000C44ED /* kursova_kalninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B9FFF2EC70936000C44ED /* kursova_kalninApp.swift */; };
+		236BA0022EC70936000C44ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA0012EC70936000C44ED /* ContentView.swift */; };
+		236BA0042EC70939000C44ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236BA0032EC70939000C44ED /* Assets.xcassets */; };
+		236BA0072EC70939000C44ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236BA0062EC70939000C44ED /* Preview Assets.xcassets */; };
+		236BA0112EC7093A000C44ED /* kursova_kalninTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA0102EC7093A000C44ED /* kursova_kalninTests.swift */; };
+		236BA01B2EC7093A000C44ED /* kursova_kalninUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA01A2EC7093A000C44ED /* kursova_kalninUITests.swift */; };
+		236BA01D2EC7093A000C44ED /* kursova_kalninUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA01C2EC7093A000C44ED /* kursova_kalninUITestsLaunchTests.swift */; };
+		236BA02A2EC70C98000C44ED /* MoviesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA0292EC70C98000C44ED /* MoviesModels.swift */; };
+		236BA02C2EC70CC9000C44ED /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA02B2EC70CC9000C44ED /* MovieViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		236BA00D2EC7093A000C44ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 236B9FF42EC70936000C44ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 236B9FFB2EC70936000C44ED;
+			remoteInfo = kursova_kalnin;
+		};
+		236BA0172EC7093A000C44ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 236B9FF42EC70936000C44ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 236B9FFB2EC70936000C44ED;
+			remoteInfo = kursova_kalnin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		236B9FFC2EC70936000C44ED /* kursova_kalnin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kursova_kalnin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		236B9FFF2EC70936000C44ED /* kursova_kalninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kursova_kalninApp.swift; sourceTree = "<group>"; };
+		236BA0012EC70936000C44ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		236BA0032EC70939000C44ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		236BA0062EC70939000C44ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		236BA00C2EC7093A000C44ED /* kursova_kalninTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kursova_kalninTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		236BA0102EC7093A000C44ED /* kursova_kalninTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kursova_kalninTests.swift; sourceTree = "<group>"; };
+		236BA0162EC7093A000C44ED /* kursova_kalninUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kursova_kalninUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		236BA01A2EC7093A000C44ED /* kursova_kalninUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kursova_kalninUITests.swift; sourceTree = "<group>"; };
+		236BA01C2EC7093A000C44ED /* kursova_kalninUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kursova_kalninUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		236BA0292EC70C98000C44ED /* MoviesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModels.swift; sourceTree = "<group>"; };
+		236BA02B2EC70CC9000C44ED /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		236B9FF92EC70936000C44ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA0092EC7093A000C44ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA0132EC7093A000C44ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		236B9FF32EC70936000C44ED = {
+			isa = PBXGroup;
+			children = (
+				236B9FFE2EC70936000C44ED /* kursova_kalnin */,
+				236BA00F2EC7093A000C44ED /* kursova_kalninTests */,
+				236BA0192EC7093A000C44ED /* kursova_kalninUITests */,
+				236B9FFD2EC70936000C44ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		236B9FFD2EC70936000C44ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				236B9FFC2EC70936000C44ED /* kursova_kalnin.app */,
+				236BA00C2EC7093A000C44ED /* kursova_kalninTests.xctest */,
+				236BA0162EC7093A000C44ED /* kursova_kalninUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		236B9FFE2EC70936000C44ED /* kursova_kalnin */ = {
+			isa = PBXGroup;
+			children = (
+				236B9FFF2EC70936000C44ED /* kursova_kalninApp.swift */,
+				236BA0012EC70936000C44ED /* ContentView.swift */,
+				236BA0032EC70939000C44ED /* Assets.xcassets */,
+				236BA0052EC70939000C44ED /* Preview Content */,
+				236BA0292EC70C98000C44ED /* MoviesModels.swift */,
+				236BA02B2EC70CC9000C44ED /* MovieViewModel.swift */,
+			);
+			path = kursova_kalnin;
+			sourceTree = "<group>";
+		};
+		236BA0052EC70939000C44ED /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				236BA0062EC70939000C44ED /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		236BA00F2EC7093A000C44ED /* kursova_kalninTests */ = {
+			isa = PBXGroup;
+			children = (
+				236BA0102EC7093A000C44ED /* kursova_kalninTests.swift */,
+			);
+			path = kursova_kalninTests;
+			sourceTree = "<group>";
+		};
+		236BA0192EC7093A000C44ED /* kursova_kalninUITests */ = {
+			isa = PBXGroup;
+			children = (
+				236BA01A2EC7093A000C44ED /* kursova_kalninUITests.swift */,
+				236BA01C2EC7093A000C44ED /* kursova_kalninUITestsLaunchTests.swift */,
+			);
+			path = kursova_kalninUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		236B9FFB2EC70936000C44ED /* kursova_kalnin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 236BA0202EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalnin" */;
+			buildPhases = (
+				236B9FF82EC70936000C44ED /* Sources */,
+				236B9FF92EC70936000C44ED /* Frameworks */,
+				236B9FFA2EC70936000C44ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kursova_kalnin;
+			productName = kursova_kalnin;
+			productReference = 236B9FFC2EC70936000C44ED /* kursova_kalnin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		236BA00B2EC7093A000C44ED /* kursova_kalninTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 236BA0232EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalninTests" */;
+			buildPhases = (
+				236BA0082EC7093A000C44ED /* Sources */,
+				236BA0092EC7093A000C44ED /* Frameworks */,
+				236BA00A2EC7093A000C44ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				236BA00E2EC7093A000C44ED /* PBXTargetDependency */,
+			);
+			name = kursova_kalninTests;
+			productName = kursova_kalninTests;
+			productReference = 236BA00C2EC7093A000C44ED /* kursova_kalninTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		236BA0152EC7093A000C44ED /* kursova_kalninUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 236BA0262EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalninUITests" */;
+			buildPhases = (
+				236BA0122EC7093A000C44ED /* Sources */,
+				236BA0132EC7093A000C44ED /* Frameworks */,
+				236BA0142EC7093A000C44ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				236BA0182EC7093A000C44ED /* PBXTargetDependency */,
+			);
+			name = kursova_kalninUITests;
+			productName = kursova_kalninUITests;
+			productReference = 236BA0162EC7093A000C44ED /* kursova_kalninUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		236B9FF42EC70936000C44ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					236B9FFB2EC70936000C44ED = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					236BA00B2EC7093A000C44ED = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 236B9FFB2EC70936000C44ED;
+					};
+					236BA0152EC7093A000C44ED = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 236B9FFB2EC70936000C44ED;
+					};
+				};
+			};
+			buildConfigurationList = 236B9FF72EC70936000C44ED /* Build configuration list for PBXProject "kursova_kalnin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 236B9FF32EC70936000C44ED;
+			productRefGroup = 236B9FFD2EC70936000C44ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				236B9FFB2EC70936000C44ED /* kursova_kalnin */,
+				236BA00B2EC7093A000C44ED /* kursova_kalninTests */,
+				236BA0152EC7093A000C44ED /* kursova_kalninUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		236B9FFA2EC70936000C44ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				236BA0072EC70939000C44ED /* Preview Assets.xcassets in Resources */,
+				236BA0042EC70939000C44ED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA00A2EC7093A000C44ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA0142EC7093A000C44ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		236B9FF82EC70936000C44ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				236BA0022EC70936000C44ED /* ContentView.swift in Sources */,
+				236BA0002EC70936000C44ED /* kursova_kalninApp.swift in Sources */,
+				236BA02A2EC70C98000C44ED /* MoviesModels.swift in Sources */,
+				236BA02C2EC70CC9000C44ED /* MovieViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA0082EC7093A000C44ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				236BA0112EC7093A000C44ED /* kursova_kalninTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		236BA0122EC7093A000C44ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				236BA01B2EC7093A000C44ED /* kursova_kalninUITests.swift in Sources */,
+				236BA01D2EC7093A000C44ED /* kursova_kalninUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		236BA00E2EC7093A000C44ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 236B9FFB2EC70936000C44ED /* kursova_kalnin */;
+			targetProxy = 236BA00D2EC7093A000C44ED /* PBXContainerItemProxy */;
+		};
+		236BA0182EC7093A000C44ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 236B9FFB2EC70936000C44ED /* kursova_kalnin */;
+			targetProxy = 236BA0172EC7093A000C44ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		236BA01E2EC7093A000C44ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		236BA01F2EC7093A000C44ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		236BA0212EC7093A000C44ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"kursova_kalnin/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalnin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		236BA0222EC7093A000C44ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"kursova_kalnin/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalnin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		236BA0242EC7093A000C44ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalninTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kursova_kalnin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/kursova_kalnin";
+			};
+			name = Debug;
+		};
+		236BA0252EC7093A000C44ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalninTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kursova_kalnin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/kursova_kalnin";
+			};
+			name = Release;
+		};
+		236BA0272EC7093A000C44ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalninUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = kursova_kalnin;
+			};
+			name = Debug;
+		};
+		236BA0282EC7093A000C44ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aaa.kursova-kalninUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = kursova_kalnin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		236B9FF72EC70936000C44ED /* Build configuration list for PBXProject "kursova_kalnin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				236BA01E2EC7093A000C44ED /* Debug */,
+				236BA01F2EC7093A000C44ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		236BA0202EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalnin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				236BA0212EC7093A000C44ED /* Debug */,
+				236BA0222EC7093A000C44ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		236BA0232EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalninTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				236BA0242EC7093A000C44ED /* Debug */,
+				236BA0252EC7093A000C44ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		236BA0262EC7093A000C44ED /* Build configuration list for PBXNativeTarget "kursova_kalninUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				236BA0272EC7093A000C44ED /* Debug */,
+				236BA0282EC7093A000C44ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 236B9FF42EC70936000C44ED /* Project object */;
+}
