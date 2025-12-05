@@ -2,51 +2,127 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var vm = MovieViewModel()
+    
+    @State private var showSearch = false
+    @State private var searchText = ""
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-
-                    // Watch Later Section
-                    if !vm.watchLater.isEmpty {
-                        sectionHeader("Дивитись пізніше")
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 12) {
-                                ForEach(vm.watchLater) { movie in
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [.yellow, .orange, .pink]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 16) {
+                        
+                        // MARK: Watch Later
+                        if !vm.watchLater.isEmpty {
+                            sectionHeader("Дивитись пізніше")
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 12) {
+                                    ForEach(vm.watchLater) { movie in
+                                        NavigationLink(destination: MovieDetailView(movieId: movie.id, viewModel: vm)) {
+                                            MovieCardView(movie: movie)
+                                                .frame(width: 140)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // MARK: Search Results
+                        if !vm.searchResults.isEmpty {
+                            sectionHeader("Результати пошуку")
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                ForEach(vm.searchResults) { movie in
                                     NavigationLink(destination: MovieDetailView(movieId: movie.id, viewModel: vm)) {
                                         MovieCardView(movie: movie)
-                                            .frame(width: 140)
                                     }
-                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                        } else {
+                            // MARK: Popular
+                            sectionHeader("Популярне")
+                            movieSection(movies: vm.popular, loading: vm.isLoadingPopular)
+                            
+                            // MARK: Trending
+                            sectionHeader("В тренді")
+                            movieSection(movies: vm.trending, loading: vm.isLoadingTrending)
+                        }
+                    }
+                    .padding()
+                }
+                .navigationTitle("Каталог фільмів")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showSearch = true
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                        }
+                    }
+                }
+                .task {
+                    vm.loadWatchLater()
+                    await vm.fetchPopular()
+                    await vm.fetchTrending()
+                }
+                .sheet(isPresented: $showSearch) {
+                    NavigationView {
+                        VStack {
+                            TextField("Введіть назву фільму...", text: $searchText)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                                .onSubmit {
+                                    Task {
+                                        await vm.searchMovies(query: searchText)
+                                    }
+                                }
+
+                            if vm.isSearching {
+                                ProgressView().padding()
+                            }
+
+                            ScrollView {
+                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                    ForEach(vm.searchResults) { movie in
+                                        NavigationLink(destination: MovieDetailView(movieId: movie.id, viewModel: vm)) {
+                                            MovieCardView(movie: movie)
+                                        }
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                        }
+                        .navigationTitle("Пошук")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Закрити і очистити") {
+                                    searchText = ""
+                                    vm.searchResults = []
+                                    showSearch = false
                                 }
                             }
                         }
                     }
-
-                    sectionHeader("Популярне")
-                    movieSection(movies: vm.popular, loading: vm.isLoadingPopular)
-
-                    sectionHeader("В тренді")
-                    movieSection(movies: vm.trending, loading: vm.isLoadingTrending)
                 }
-                .padding()
-            }
-            .navigationTitle("Каталог фільмів")
-            .task {
-                vm.loadWatchLater()
-                await vm.fetchPopular()
-                await vm.fetchTrending()
             }
         }
     }
 
+    // MARK: - Section Header
     private func sectionHeader(_ text: String) -> some View {
         Text(text)
             .font(.title2).bold()
             .padding(.horizontal, 4)
     }
 
+    // MARK: - Movie Section
     @ViewBuilder
     private func movieSection(movies: [Movie], loading: Bool) -> some View {
         if loading {
@@ -73,24 +149,42 @@ struct MovieCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            AsyncImage(url: MovieViewModel().fullImageURL(for: movie.poster_path)) { phase in
+            AsyncImage(url: buildImageURL()) { phase in
                 switch phase {
-                case .empty: Rectangle().foregroundColor(.gray.opacity(0.3))
-                case .success(let img): img.resizable().scaledToFill()
-                case .failure: Rectangle().foregroundColor(.red.opacity(0.3))
-                @unknown default: Rectangle().foregroundColor(.gray.opacity(0.3))
+                case .empty:
+                    Rectangle().foregroundColor(.gray.opacity(0.3))
+                        .frame(height: 200)
+                case .success(let img):
+                    img.resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 200)
+                        .clipped()
+                case .failure:
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .padding()
+                @unknown default:
+                    Rectangle().foregroundColor(.gray.opacity(0.3))
+                        .frame(height: 200)
                 }
             }
-            .frame(height: 200)
-            .clipped()
 
             Text(movie.title)
-                .font(.footnote).bold()
+                .font(.footnote)
+                .bold()
                 .lineLimit(2)
+                .padding(8)
         }
         .background(Color(.secondarySystemBackground))
         .cornerRadius(8)
         .shadow(radius: 2)
+    }
+
+    private func buildImageURL() -> URL? {
+        guard let path = movie.poster_path, !path.isEmpty else { return nil }
+        return URL(string: MovieViewModel.imageBaseURL + path)
     }
 }
 
@@ -104,85 +198,107 @@ struct MovieDetailView: View {
     @State private var showShare = false
 
     var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView("Завантаження…")
-                    .padding()
-            } else if let error = error {
-                Text(error)
-                    .foregroundColor(.red)
-                    .padding()
-            } else if let detail = detail {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 12) {
-                        AsyncImage(url: viewModel.fullImageURL(for: detail.poster_path)) { phase in
-                            switch phase {
-                            case .empty: Rectangle().foregroundColor(.gray.opacity(0.3))
-                            case .success(let img): img.resizable().scaledToFill()
-                            case .failure: Rectangle().foregroundColor(.red.opacity(0.3))
-                            @unknown default: Rectangle().foregroundColor(.gray.opacity(0.3))
-                            }
-                        }
-                        .frame(height: 360)
-                        .clipped()
-
-                        Text(detail.title).font(.title).bold()
-
-                        HStack {
-                            if let vote = detail.vote_average {
-                                Text(String(format: "%.1f ⭐️", vote))
-                            }
-                            Spacer()
-                            if let date = detail.release_date {
-                                Text(date)
-                            }
-                        }
-
-                        Text(detail.overview ?? "Без опису")
-                            .padding(.top, 8)
-
-                        HStack(spacing: 12) {
-                            Button(action: {
-                                let movie = Movie(id: detail.id,
-                                                  title: detail.title,
-                                                  overview: detail.overview,
-                                                  vote_average: detail.vote_average,
-                                                  release_date: detail.release_date,
-                                                  poster_path: detail.poster_path)
-                                if viewModel.isInWatchLater(movie) {
-                                    viewModel.removeFromWatchLater(movie)
-                                } else {
-                                    viewModel.addToWatchLater(movie)
+        ZStack {
+            LinearGradient(
+                            gradient: Gradient(colors: [.yellow, .orange, .pink]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
+            
+            VStack {
+                if isLoading {
+                    ProgressView("Завантаження…")
+                        .padding()
+                } else if let error = error {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
+                } else if let detail = detail {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 12) {
+                            AsyncImage(url: viewModel.fullImageURL(for: detail.poster_path)) { phase in
+                                switch phase {
+                                case .empty: Rectangle().foregroundColor(.gray.opacity(0.3))
+                                case .success(let img): img.resizable().scaledToFill()
+                                case .failure: Rectangle().foregroundColor(.red.opacity(0.3))
+                                @unknown default: Rectangle().foregroundColor(.gray.opacity(0.3))
                                 }
-                            }) {
-                                Text(viewModel.isInWatchLater(Movie(id: detail.id,
-                                                                    title: detail.title,
-                                                                    overview: detail.overview,
-                                                                    vote_average: detail.vote_average,
-                                                                    release_date: detail.release_date,
-                                                                    poster_path: detail.poster_path)) ? "Прибрати з ⭐️" : "Додати в ⭐️")
                             }
-                            .buttonStyle(.borderedProminent)
+                            .frame(height: 360)
+                            .clipped()
+                            
+                            Text(detail.title).font(.title).bold()
+                            
+                            HStack {
+                                if let vote = detail.vote_average {
+                                    Text(String(format: "%.1f ⭐️", vote))
+                                }
+                                Spacer()
+                                if let date = detail.release_date {
+                                    Text(date)
+                                }
+                            }
+                            
+                            Text(detail.overview ?? "Без опису")
+                                .padding(.top, 8)
+                            
+                            HStack {
+                                Spacer()
 
-                            Button("Поділитись") {
-                                showShare = true
+                                Button(action: {
+                                    let movie = Movie(id: detail.id,
+                                                      title: detail.title,
+                                                      overview: detail.overview,
+                                                      vote_average: detail.vote_average,
+                                                      release_date: detail.release_date,
+                                                      poster_path: detail.poster_path)
+
+                                    if viewModel.isInWatchLater(movie) {
+                                        viewModel.removeFromWatchLater(movie)
+                                    } else {
+                                        viewModel.addToWatchLater(movie)
+                                    }
+
+                                }) {
+                                    Text(viewModel.isInWatchLater(Movie(id: detail.id,
+                                                                        title: detail.title,
+                                                                        overview: detail.overview,
+                                                                        vote_average: detail.vote_average,
+                                                                        release_date: detail.release_date,
+                                                                        poster_path: detail.poster_path)) ?
+                                         "Прибрати з ⭐️" : "Додати в ⭐️")
+                                        .frame(maxWidth: 220)
+                                }
+                                .buttonStyle(.borderedProminent)
+
+                                Spacer()
                             }
-                            .buttonStyle(.bordered)
+                            .padding(.top, 16)
                         }
-                        .padding(.top, 12)
+                        .padding()
                     }
-                    .padding()
+                } else {
+                    EmptyView()
                 }
-            } else {
-                EmptyView()
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showShare = true
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                }
+            }
+            .sheet(isPresented: $showShare) {
+                ActivityView(activityItems: [detail?.title ?? ""])
+            }
+            .navigationTitle("Деталі")
+            .task { await loadDetail() }
         }
-        .sheet(isPresented: $showShare) {
-            ActivityView(activityItems: [detail?.title ?? ""])
-        }
-        .navigationTitle("Деталі")
-        .task { await loadDetail() }
     }
+    
 
     private func loadDetail() async {
         isLoading = true

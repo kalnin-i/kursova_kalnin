@@ -11,6 +11,8 @@ final class MovieViewModel: ObservableObject {
     @Published var isLoadingPopular = false
     @Published var isLoadingTrending = false
     @Published var errorMessage: String? = nil
+    @Published var searchResults: [Movie] = []
+    @Published var isSearching = false
 
     func fetchPopular() async {
         isLoadingPopular = true
@@ -92,5 +94,31 @@ final class MovieViewModel: ObservableObject {
 
     func isInWatchLater(_ movie: Movie) -> Bool {
         watchLater.contains { $0.id == movie.id }
+    }
+    
+    func searchMovies(query: String) async {
+        guard !query.isEmpty else {
+            searchResults = []
+            return
+        }
+
+        isSearching = true
+        errorMessage = nil
+        defer { isSearching = false }
+
+        let queryEncoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+
+        guard let url = URL(string: "\(baseURL)/search/movie?api_key=\(apiKey)&language=en-US&query=\(queryEncoded)") else {
+            errorMessage = "Невірний URL для пошуку"
+            return
+        }
+
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let results = try JSONDecoder().decode(MoviesResponse.self, from: data).results
+            searchResults = results.filter { $0.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" }
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
