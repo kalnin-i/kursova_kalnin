@@ -17,7 +17,6 @@ final class MovieViewModel: ObservableObject {
     @Published var isSearching = false
     @Published var errorMessage: String?
 
-    // MARK: - POPULAR
     func fetchPopular() async {
         isLoadingPopular = true
         defer { isLoadingPopular = false }
@@ -29,7 +28,6 @@ final class MovieViewModel: ObservableObject {
         }
     }
 
-    // MARK: - TRENDING
     func fetchTrending() async {
         isLoadingTrending = true
         defer { isLoadingTrending = false }
@@ -41,12 +39,10 @@ final class MovieViewModel: ObservableObject {
         }
     }
 
-    // MARK: - DETAIL
     func fetchMovieDetail(movieId: Int) async throws -> MovieDetail {
         try await api.fetchMovieDetail(id: movieId)
     }
 
-    // MARK: - SEARCH
     func searchMovies(query: String) async {
         guard !query.isEmpty else {
             searchResults = []
@@ -63,7 +59,6 @@ final class MovieViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Watch Later
     @Published var watchLater: [Movie] = []
     private let watchLaterKey = "watchLaterMovies"
 
@@ -95,7 +90,6 @@ final class MovieViewModel: ObservableObject {
         watchLater.contains { $0.id == movie.id }
     }
 
-    // MARK: - Image URL
     func fullImageURL(for path: String?) -> URL? {
         guard let path = path else { return nil }
         return URL(string: "\(MovieViewModel.imageBaseURL)\(path)")
