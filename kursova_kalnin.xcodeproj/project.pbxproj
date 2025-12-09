@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231D605A2EE81BBB0030047A /* MovieAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D60592EE81BBB0030047A /* MovieAPIService.swift */; };
 		236BA0002EC70936000C44ED /* kursova_kalninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B9FFF2EC70936000C44ED /* kursova_kalninApp.swift */; };
 		236BA0022EC70936000C44ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BA0012EC70936000C44ED /* ContentView.swift */; };
 		236BA0042EC70939000C44ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236BA0032EC70939000C44ED /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231D60592EE81BBB0030047A /* MovieAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIService.swift; sourceTree = "<group>"; };
 		236B9FFC2EC70936000C44ED /* kursova_kalnin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kursova_kalnin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236B9FFF2EC70936000C44ED /* kursova_kalninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kursova_kalninApp.swift; sourceTree = "<group>"; };
 		236BA0012EC70936000C44ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				236BA0052EC70939000C44ED /* Preview Content */,
 				236BA0292EC70C98000C44ED /* MoviesModels.swift */,
 				236BA02B2EC70CC9000C44ED /* MovieViewModel.swift */,
+				231D60592EE81BBB0030047A /* MovieAPIService.swift */,
 			);
 			path = kursova_kalnin;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				236BA0022EC70936000C44ED /* ContentView.swift in Sources */,
+				231D605A2EE81BBB0030047A /* MovieAPIService.swift in Sources */,
 				236BA0002EC70936000C44ED /* kursova_kalninApp.swift in Sources */,
 				236BA02A2EC70C98000C44ED /* MoviesModels.swift in Sources */,
 				236BA02C2EC70CC9000C44ED /* MovieViewModel.swift in Sources */,

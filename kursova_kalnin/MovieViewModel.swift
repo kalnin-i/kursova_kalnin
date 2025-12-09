@@ -2,66 +2,65 @@ import Foundation
 
 @MainActor
 final class MovieViewModel: ObservableObject {
-    private let apiKey: String = "dcf9b82a9bdb545ae094b6318541b9a0"
-    private let baseURL = "https://api.themoviedb.org/3"
-    static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
+    private let api: MovieAPIServiceProtocol
+
+    init(api: MovieAPIServiceProtocol = MovieAPIService()) {
+        self.api = api
+    }
 
     @Published var popular: [Movie] = []
     @Published var trending: [Movie] = []
+    @Published var searchResults: [Movie] = []
+
     @Published var isLoadingPopular = false
     @Published var isLoadingTrending = false
-    @Published var errorMessage: String? = nil
-    @Published var searchResults: [Movie] = []
     @Published var isSearching = false
+    @Published var errorMessage: String?
 
+    // MARK: - POPULAR
     func fetchPopular() async {
         isLoadingPopular = true
-        errorMessage = nil
         defer { isLoadingPopular = false }
 
-        guard let url = URL(string: "\(baseURL)/movie/popular?api_key=\(apiKey)&&language=en-US&page=1") else {
-            errorMessage = "Невірний URL для popular"
-            return
-        }
-
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            popular = try JSONDecoder().decode(MoviesResponse.self, from: data).results
+            popular = try await api.fetchPopular()
         } catch {
             errorMessage = error.localizedDescription
         }
     }
 
+    // MARK: - TRENDING
     func fetchTrending() async {
         isLoadingTrending = true
-        errorMessage = nil
         defer { isLoadingTrending = false }
 
-        guard let url = URL(string: "\(baseURL)/trending/movie/day?api_key=\(apiKey)") else {
-            errorMessage = "Невірний URL для trending"
-            return
-        }
-
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            trending = try JSONDecoder().decode(MoviesResponse.self, from: data).results
+            trending = try await api.fetchTrending()
         } catch {
             errorMessage = error.localizedDescription
         }
     }
 
+    // MARK: - DETAIL
     func fetchMovieDetail(movieId: Int) async throws -> MovieDetail {
-        guard let url = URL(string: "\(baseURL)/movie/\(movieId)?api_key=\(apiKey)&language=en-US") else {
-            throw URLError(.badURL)
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return try JSONDecoder().decode(MovieDetail.self, from: data)
+        try await api.fetchMovieDetail(id: movieId)
     }
-    
-    // MARK: - Image URL Builder
-    func fullImageURL(for path: String?) -> URL? {
-        guard let path = path else { return nil }
-        return URL(string: "\(Self.imageBaseURL)\(path)")
+
+    // MARK: - SEARCH
+    func searchMovies(query: String) async {
+        guard !query.isEmpty else {
+            searchResults = []
+            return
+        }
+
+        isSearching = true
+        defer { isSearching = false }
+
+        do {
+            searchResults = try await api.searchMovies(query: query)
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 
     // MARK: - Watch Later
@@ -95,30 +94,12 @@ final class MovieViewModel: ObservableObject {
     func isInWatchLater(_ movie: Movie) -> Bool {
         watchLater.contains { $0.id == movie.id }
     }
-    
-    func searchMovies(query: String) async {
-        guard !query.isEmpty else {
-            searchResults = []
-            return
-        }
 
-        isSearching = true
-        errorMessage = nil
-        defer { isSearching = false }
-
-        let queryEncoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-
-        guard let url = URL(string: "\(baseURL)/search/movie?api_key=\(apiKey)&language=en-US&query=\(queryEncoded)") else {
-            errorMessage = "Невірний URL для пошуку"
-            return
-        }
-
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let results = try JSONDecoder().decode(MoviesResponse.self, from: data).results
-            searchResults = results.filter { $0.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
+    // MARK: - Image URL
+    func fullImageURL(for path: String?) -> URL? {
+        guard let path = path else { return nil }
+        return URL(string: "\(MovieViewModel.imageBaseURL)\(path)")
     }
+
+    static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
 }

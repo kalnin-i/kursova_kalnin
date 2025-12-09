@@ -19,7 +19,6 @@ struct ContentView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
                         
-                        // MARK: Watch Later
                         if !vm.watchLater.isEmpty {
                             sectionHeader("Дивитись пізніше")
                             ScrollView(.horizontal, showsIndicators: false) {
@@ -35,7 +34,6 @@ struct ContentView: View {
                             }
                         }
                         
-                        // MARK: Search Results
                         if !vm.searchResults.isEmpty {
                             sectionHeader("Результати пошуку")
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
@@ -46,11 +44,9 @@ struct ContentView: View {
                                 }
                             }
                         } else {
-                            // MARK: Popular
                             sectionHeader("Популярне")
                             movieSection(movies: vm.popular, loading: vm.isLoadingPopular)
                             
-                            // MARK: Trending
                             sectionHeader("В тренді")
                             movieSection(movies: vm.trending, loading: vm.isLoadingTrending)
                         }
@@ -115,14 +111,12 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Section Header
     private func sectionHeader(_ text: String) -> some View {
         Text(text)
             .font(.title2).bold()
             .padding(.horizontal, 4)
     }
 
-    // MARK: - Movie Section
     @ViewBuilder
     private func movieSection(movies: [Movie], loading: Bool) -> some View {
         if loading {
@@ -143,7 +137,6 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Movie Card View
 struct MovieCardView: View {
     let movie: Movie
 
@@ -188,7 +181,6 @@ struct MovieCardView: View {
     }
 }
 
-// MARK: - Movie Detail View
 struct MovieDetailView: View {
     let movieId: Int
     @ObservedObject var viewModel: MovieViewModel
